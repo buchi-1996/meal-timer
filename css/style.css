@@ -7,16 +7,11 @@
 }
 
 body{
-    display: flex;
-    flex-direction: column;
     background: linear-gradient(#f8f9fab0, rgba(0, 128, 0, 0.377)), url(../img/svgs.svg)  repeat-y;
-    height: 100vh;
     font-family: Montserrat, sans-serif;
 }
 
 header{
-    min-height: 30px;
-    /* background: #494f55; */
     padding: 15px 50px; 
     font-weight: bolder;
 }
@@ -26,35 +21,92 @@ header .nav-brand h4 a{
     text-decoration: none;
 }
 
+
+.time-display .card-header{
+    padding: 10px;
+    text-align: center;
+    font-size: 50px;
+}
+
 .display{
-    flex-grow: 1;
-    margin: 30px auto 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 50px auto 100px;
+}
+
+.form-card{
+    border: 1px solid #ccc;
+    padding: 24px;
+    box-shadow: 0 0 1em #ccc;
+    width: 500px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.61);
+    border-radius: 3px;
+    margin: 0 0 40px;
+}
+
+.form-card h4{
+    text-align: center;
+}
+
+.form-card input[type="time"],
+input[type="text"]{
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: transparent;
+}
+
+
+
+.form-card input[type="submit"]{
+    width: 100%;
+    height: 40px;
+    background: #28a745;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    font-size: 15px;
+}
+
+.form-group{
+    margin: 15px 0;
+}
+
+.form-group label{
+    font-weight: bold;
+    font-size: 15px;
 }
 
 .card{
     width: 500px;
 }
 
-.card .card-header{
-    padding: 10px;
-    text-align: center;
-    font-size: 50px;
+.card .card-img{
+    height: 300px;
+    width: 100%;
+    border: 7px solid rgba(0, 128, 0, 0.274);
+    box-shadow: 0 0 0.6em rgba(51, 51, 51, 0.651);
+    overflow: hidden;
 }
 
-.card-img{
-    
-}
 
 .card .card-img img{
     height: 300px;
     width: 100%;
-    /* opacity: 0.8; */
-    border: 7px solid rgba(0, 128, 0, 0.274);
     transition: all .5s ease;
 }
 
 .card .card-img img:hover{
     filter: grayscale(1);
+    transform: scale(1.2);
 }
 
 .card .card-footer{
@@ -69,15 +121,13 @@ header .nav-brand h4 a{
 }
 
 footer{
-    min-height: 30px;
     display: flex;
     justify-content: space-around;
     background: #494f55;
     color: #f8f9fa;
     padding: 10px 0;
     flex-wrap: wrap;
-    font-size: 13px
-
+    font-size: 13px;
 }
 
 footer a{
@@ -93,10 +143,6 @@ footer a{
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-
-    .card{
-        width: 350px;
     }
 
     .card-header h4{
@@ -124,6 +170,9 @@ footer a{
         align-items: center;
     }
 
+    .form-card{
+        width: 300px;
+    }
     .card{
         width: 300px;
     }

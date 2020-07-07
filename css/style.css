@@ -145,6 +145,12 @@ footer a{
         align-items: center;
     }
 
+    .form-card{
+        width: 380px;
+    }
+    .card{
+        width: 380px;
+    }
     .card-header h4{
         font-size: 45px;
     }
@@ -154,7 +160,8 @@ footer a{
 
     footer p{
         margin: 0 12px;
-        line-height: 2;
+        line-height
+        : 2;
         font-size: 9px;
     }
 }

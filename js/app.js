@@ -1,7 +1,9 @@
 'use strict';
 
 class countTime{
-     constructor(){
+     constructor(userTime, userMeal){
+        this.userTime = userTime;
+        this.userMeal = userMeal;
          this.time = new Date();
          this.hours = this.time.getHours();
          this.minutes = this.time.getMinutes();
@@ -66,3 +68,11 @@ class countTime{
 
 const ui = new countTime();
 ui.showTime();
+
+document.querySelector('.form-card').addEventListener('submit', (e) => {
+   const userTimeInput = document.getElementById('time').value,
+         userMealInput = document.getElementById('text').value;
+   const ui = new countTime(userTimeInput, userMealInput);
+   console.log(ui);
+   e.preventDefault();
+})

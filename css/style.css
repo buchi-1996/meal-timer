@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(#f8f9fab0, rgba(0, 128, 0, 0.377)), url(../img/svgs.svg)  repeat-y;
+    height: 100vh;
+    font-family: Montserrat, sans-serif;
+}
+
+header{
+    min-height: 30px;
+    /* background: #494f55; */
+    padding: 15px 50px; 
+    font-weight: bolder;
+}
+
+header .nav-brand h4 a{
+    color: #222;
+    text-decoration: none;
+}
+
+.display{
+    flex-grow: 1;
+    margin: 30px auto 10px;
+}
+
+.card{
+    width: 500px;
+}
+
+.card .card-header{
+    padding: 10px;
+    text-align: center;
+    font-size: 50px;
+}
+
+.card-img{
+    
+}
+
+.card .card-img img{
+    height: 300px;
+    width: 100%;
+    /* opacity: 0.8; */
+    border: 7px solid rgba(0, 128, 0, 0.274);
+    transition: all .5s ease;
+}
+
+.card .card-img img:hover{
+    filter: grayscale(1);
+}
+
+.card .card-footer{
+    padding: 10px;
+    text-align: center;
+    font-size: 50px;
+}
+
+.card-footer h4{
+    font-size: 30px;
+    text-transform: capitalize;
+}
+
+footer{
+    min-height: 30px;
+    display: flex;
+    justify-content: space-around;
+    background: #494f55;
+    color: #f8f9fa;
+    padding: 10px 0;
+    flex-wrap: wrap;
+    font-size: 13px
+
+}
+
+footer a{
+    color: #f8f9fa;
+}
+
+@media screen and (max-width: 568px){
+    header .nav-brand{
+        text-align: center;
+    }
+    
+    .display{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card{
+        width: 350px;
+    }
+
+    .card-header h4{
+        font-size: 45px;
+    }
+    .card-footer h4{
+        font-size: 20px;
+    }
+
+    footer p{
+        margin: 0 12px;
+        line-height: 2;
+        font-size: 9px;
+    }
+}
+
+@media screen and (max-width: 320px ){
+    header .nav-brand{
+        text-align: center;
+    }
+    
+    .display{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card{
+        width: 300px;
+    }
+
+    .card-header h4{
+        font-size: 35px;
+    }
+    .card-footer h4{
+        font-size: 20px;
+    }
+
+    footer p{
+        margin: 0 12px;
+        line-height: 2;
+        font-size: 9px;
+    }
+}

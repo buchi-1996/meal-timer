@@ -26,8 +26,8 @@ class countTime {
    addlistToUi(item){
       let row = document.createElement('tr');
       row.innerHTML =  `<td>${item.userTime}</td>
-                  <td>${item.userMeal}</td>
-                  <td>${item.userHour}:00</td>`
+                        <td>${item.userMeal}</td>
+                        <td>${item.userHour}:00</td>`;
       
          
       document.querySelector('tbody').appendChild(row);
@@ -35,7 +35,7 @@ class countTime {
   
    validateMeal(){
       const LIST = storage.getItems();
-      LIST.filter(list => {
+      LIST.forEach(list => {
          if(list.userHour < 10){
             list.userHour = `0${list.userHour}`;
          }
@@ -64,6 +64,7 @@ class countTime {
    //  display time on UI
    showTime() {
       this.covertTo_12Hr_Time();
+
       ui.validateMeal();
       this.hours = (this.hours < 10) ? `0${this.hours}` : this.hours;
       this.minutes = (this.minutes < 10) ? `0${this.minutes}` : this.minutes;
@@ -126,6 +127,15 @@ class countTime {
 // ================================================================================
 
 class storage{
+
+   static displayOnLoad(){
+      const LIST = storage.getItems()
+      const ui = new countTime();
+      LIST.forEach(list => {
+         ui.addlistToUi(list);
+      })
+   }
+
    static addToLs(item){
       let LIST = storage.getItems();
       const ui = new countTime();
@@ -203,4 +213,8 @@ function onSubmit(){
 
 document.getElementById('clear').addEventListener('click', ( ) => {
    storage.clearLs();
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+   storage.displayOnLoad();
 })

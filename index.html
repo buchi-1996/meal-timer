@@ -7,7 +7,8 @@
     <title>Meal-timer</title>
 </head>
 <body>
-    <header class="header">
+  <main>
+        <header class="header">
         <div class="nav-brand">
             <h4><a href="#">Meal Reminder</a></h4>
         </div>
@@ -19,28 +20,64 @@
     </section>
     <section class="display">
         <div class="form-card">
-            <h4>meal card</h4>
+            <h4>Meal Card</h4>
             <form>
                 <div class="form-group">
-                    <label for="time">hour</label>
-                    <input type="time" id="time" placeholder="when will you tke meal">
+                    <label for="hour">Hour</label>
+                    <input type="number" id="hour" placeholder="enter hour">
                 </div>
                 <div class="form-group">
-                    <label for="text">meal</label>
-                    <input type="text" id="text" placeholder="@rice, beans...">
+                    <label for="meal-time">Meal Time</label>
+                    <select name="mealTime" id="meal-time">
+                        <option value="" selected></option>
+                        <option value="breakfast">Breakfast</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <input type="submit" id="submit" value="submit">
+                    <label for="food">Food</label>
+                    <input type="text" id="food" placeholder="@rice, beans...">
+                </div>
+                <p><small>fill this form and see notifications, thanks for using this channel</small></p>
+                <div class="form-group">
+                    <div class="inline-btn">
+                        <input type="submit" id="submit" value="submit">
+                        <input type="button" id="clear" value="clear Ls">
+                    </div>
                 </div>
             </form>
+            <div class="loader">
+                <img src="img/ajax-loader.gif" alt="">
+            </div>
         </div>
         <div class="card">
-            <div class="card-img">
-                <img src="./img/9.jpg" alt="">
-            </div>
-            <div class="card-footer">
-                <h4>Breakfast</h4>
-            </div>
+            <div class="card-inner">
+                <div class="card-img">
+                   <img src="img/codingtime.jpg" alt="">
+                </div>
+                <div class="card-text">
+                   <p>i'm coding for now, will set eating time later</p>
+                   <div class="time">02:30</div>
+                </div>
+          </div>
+         <div class="table-container">
+            <table class="table">
+                <h3>Meal List</h3>
+                <thead>
+                    <tr>
+                        <th scope="col">Daily Routine</th>
+                        <th scope="col">Meal</th>
+                        <th scope="col">Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        
+                    </tr> -->
+                </tbody>
+            </table>
+         </div>
         </div>
     </section>
     <footer>
@@ -48,6 +85,7 @@
         <p>&copy; 2020</p>
         <p>Powered by: GADS 2020</p>
     </footer>
+  </main>
     <script src="js/app.js"></script>
 </body>
 </html>

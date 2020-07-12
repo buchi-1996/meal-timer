@@ -215,8 +215,10 @@ document.querySelector('.form-card').addEventListener('submit', (e) => {
 
 document.querySelector('tbody').addEventListener('click', (e)=>{
    const ui = new countTime();
-   ui.deleteFromUI(e.target.parentElement);
-   storage.deleteFromLs(e.target.parentElement.parentElement.firstElementChild.textContent)
+   if(confirm('Are you sure')){
+      ui.deleteFromUI(e.target.parentElement);
+      storage.deleteFromLs(e.target.parentElement.parentElement.firstElementChild.textContent)
+   }
 })
 
 function onSubmit(){
@@ -239,7 +241,9 @@ function onSubmit(){
 
 
 document.getElementById('clear').addEventListener('click', ( ) => {
-   storage.clearLs();
+   if(confirm('You are about erasing Database')){
+      storage.clearLs();
+   }
 })
 
 document.addEventListener('DOMContentLoaded', () => {

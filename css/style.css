@@ -216,6 +216,19 @@ thead tr th{
     padding: 0 10px;
 }
 
+tr th:nth-child(4){
+    border: none;
+}
+
+.fa-trash-o{
+    color: rgb(199, 21, 21);
+    transition: all 0.5s;
+}
+
+.fa-trash-o:hover{
+    transform: scale(1.2);
+}
+
 tr{
     text-align: left;
 }

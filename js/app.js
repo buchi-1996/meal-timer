@@ -27,31 +27,41 @@ class countTime {
       let row = document.createElement('tr');
       row.innerHTML =  `<td>${item.userTime}</td>
                         <td>${item.userMeal}</td>
-                        <td>${item.userHour}:00</td>`;
+                        <td>${item.userHour}:00</td>
+                        <td class="delete"><i class="fa fa-trash-o"></i></td>`;
       
          
       document.querySelector('tbody').appendChild(row);
    }
+
+   deleteFromUI(item){
+      console.log(item);
+      const deleteRow = item.parentElement;
+      if(item.classList.contains('delete')){
+         deleteRow.remove();
+      }
+      
+   }
   
    validateMeal(){
       const LIST = storage.getItems();
+      let hour;
+      
       LIST.forEach(list => {
-         if(list.userHour < 10){
-            list.userHour = `0${list.userHour}`;
-         }
-         if(this.hours === list.userHour && list.userTime === 'breakfast' && this.am_pm === 'AM'){
+         hour = (list.userHour < 10) ? `0${list.userHour}` : list.userHour;
+         if(this.hours == hour && list.userTime === 'breakfast' && this.am_pm === 'AM'){
             this.images.attributes.src.value = `./img/breakfast.jpg`
             this.actionText.textContent = `i am eating ${list.userMeal} for ${list.userTime}`;
-            this.timeAction.textContent = `${list.userHour}:00 ${this.am_pm}`;
-         }else if(this.hours === list.userHour && list.userTime === 'lunch' && this.am_pm === 'PM'){
+            this.timeAction.textContent = `${hour}:00 ${this.am_pm}`;
+         }else if(this.hours == hour && list.userTime === 'lunch' && this.am_pm === 'PM'){
             this.images.attributes.src.value = `./img/lunchtime.jpg`;
             this.actionText.textContent = `i am eating ${list.userMeal} for ${list.userTime}`;
-            this.timeAction.textContent = `${list.userHour}:00 ${this.am_pm}`;
+            this.timeAction.textContent = `${hour}:00 ${this.am_pm}`;
          }
-         else if(this.hours === list.userHour && list.userTime === 'dinner' && this.am_pm === 'PM'){
+         else if(this.hours == hour && list.userTime === 'dinner' && this.am_pm === 'PM'){
             this.images.attributes.src.value = `./img/dinner.jpg`;
             this.actionText.textContent = `i am eating ${list.userMeal} for ${list.userTime}`;
-            this.timeAction.textContent = `${list.userHour}:00 ${this.am_pm}`;
+            this.timeAction.textContent = `${hour}:00 ${this.am_pm}`;
          }else{
             this.images.attributes.src.value = `./img/codingtime.jpg`;
             this.actionText.textContent = `i'm coding for now, will set eating time later`;
@@ -67,6 +77,7 @@ class countTime {
 
       ui.validateMeal();
       this.hours = (this.hours < 10) ? `0${this.hours}` : this.hours;
+      
       this.minutes = (this.minutes < 10) ? `0${this.minutes}` : this.minutes;
       this.seconds = (this.seconds < 10) ? `0${this.seconds}` : this.seconds
       let output = `${this.hours} : ${this.minutes} : ${this.seconds} ${this.am_pm}`
@@ -152,6 +163,16 @@ class storage{
       
       localStorage.setItem('list', JSON.stringify(LIST));
    }  
+
+   static deleteFromLs(item){
+      const LIST = storage.getItems();
+      LIST.forEach((list, index) => {
+         if(item === list.userTime){
+            LIST.splice(index, 1);
+         }
+      })
+      localStorage.setItem('list', JSON.stringify(LIST));
+   }
       
 
    static getItems(){
@@ -190,6 +211,12 @@ document.querySelector('.form-card').addEventListener('submit', (e) => {
    document.querySelector('.loader').style.display = 'block';
    setTimeout(onSubmit, 1500);
    e.preventDefault();
+})
+
+document.querySelector('tbody').addEventListener('click', (e)=>{
+   const ui = new countTime();
+   ui.deleteFromUI(e.target.parentElement);
+   storage.deleteFromLs(e.target.parentElement.parentElement.firstElementChild.textContent)
 })
 
 function onSubmit(){
